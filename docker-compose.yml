@@ -5,4 +5,4 @@ services:
     container_name: python_mercury
     volumes:
       - /docker/python_mercury/app:/usr/src/app
-    restart: no
+#    restart: no
