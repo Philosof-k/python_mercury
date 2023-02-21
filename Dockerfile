@@ -1,4 +1,7 @@
-FROM python:3
+FROM python:alpine
+
+RUN apk update \
+    && apk --no-cache --update add build-base
 
 WORKDIR /usr/src/app
 
