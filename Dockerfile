@@ -1,11 +1,12 @@
-FROM python:alpine
+FROM python:3.7-slim
 
-RUN apk update \
-    && apk --no-cache --update add build-base
+RUN apt-get update && apt-get install build-essential -y
+
+COPY npreal2_v5.1_build_21080410.tgz /tmp
+RUN tar -xzvf /tmp/npreal2_v5.1_build_21080410.tgz
 
 WORKDIR /usr/src/app
 
-COPY npreal2_v5.1_build_21080410.tgz /root
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
