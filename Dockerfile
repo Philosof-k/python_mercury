@@ -5,6 +5,7 @@ RUN apk update \
 
 WORKDIR /usr/src/app
 
+COPY npreal2_v5.1_build_21080410.tgz ./
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 
