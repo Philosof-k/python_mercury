@@ -1,9 +1,4 @@
-FROM python:3.7-slim
-
-RUN apt-get update && apt-get install build-essential -y
-
-COPY npreal2_v5.1_build_21080410.tgz /tmp
-RUN tar -xzvf /tmp/npreal2_v5.1_build_21080410.tgz
+FROM python:alpine
 
 WORKDIR /usr/src/app
 
