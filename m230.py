@@ -25,7 +25,7 @@ def crc16(data):
     return result
 
 # Open serial port
-ser = serial.Serial(com, 9600, serial.EIGHTBITS, serial.PARITY_NONE, serial.STOPBITS_ONE)
+ser = serial.serial_for_url("socket://172.30.100.115:4001")
 print ('Connected:', ser.isOpen())
 
 chunk = struct.pack('>L', int(sn))
