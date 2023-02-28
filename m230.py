@@ -2,7 +2,7 @@ import serial
 import struct
 import time
 
-sn = 1
+sn = 50
 
 def crc16(data):
     crc = 0xFFFF 
@@ -24,26 +24,31 @@ def crc16(data):
     result = data + chr(crc % 256).encode() + chr(crc // 256).encode('latin-1')
     return result
 
-# Открываем соединение
-#ser = serial.Serial('/dev/ttyUSB0', 9600, serial.EIGHTBITS, serial.PARITY_NONE, serial.STOPBITS_ONE)
-ser = serial.serial_for_url("socket://172.30.100.115:4001")
+# Open serial port
+ser = serial.Serial(com, 9600, serial.EIGHTBITS, serial.PARITY_NONE, serial.STOPBITS_ONE)
 print ('Connected:', ser.isOpen())
 
-#print (crc16("321234453432"))
-
-# \x2f - Команда для получения серийного номера
 chunk = struct.pack('>L', int(sn))
 print ('chunk:', chunk)
-chunk = b'\x2f'
+# There are commands for get different data:
+# \x2f - serial number
+# \x21 - self time
+# \x63 - get U,I,P
+# \x27 - expended electricity distributed according to tariffs
+# More information you can get there: http://www.incotexcom.ru/doc/M20x.rev2015.02.15.pdf
+chunk += b'\x27'
 print ('chunk:', chunk)
 chunk = crc16(chunk)
 print ('chunk:', chunk)
 
-# Отправим данные на счетчик и получим информацию с него
+# Send data
 ser.write(chunk)
 time.sleep(1)
 out = ser.read_all()
 ser.close()
 
-print ('Check CRC:', out[-2:] == crc16(out[:-2])[-2:])
 print ('Result string:', ':'.join('{:02x}'.format(c) for c in out))
+print ('Check CRC:', out[-2:] == crc16(out[:-2])[-2:])
+t1 = ''.join('{:02x}'.format(c) for c in out[5:9])
+t2 = ''.join('{:02x}'.format(c) for c in out[9:13])
+print ('T1 =', float(t1)*0.01, '(кВт*ч)', 'T2 =', float(t2)*0.01, '(кВт*ч)')
