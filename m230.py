@@ -31,7 +31,7 @@ print ('Connected:', ser.isOpen())
 #chunk = struct.pack('B', sn)
 chunk = b'\x01'  # код запроса
 chunk += b'\x01'  # код уровня доступа
-chunk += b'\x01'  # 1 символ пароля
+chunk += b'\x27'  # 1 символ пароля
 chunk += b'\x11'  # 2 символ пароля
 #chunk += b'\x01'  # 3 символ пароля
 #chunk += b'\x01'  # 4 символ пароля
