@@ -37,7 +37,7 @@ chunk += b'\x11'  # 2 символ пароля
 #chunk += b'\x01'  # 4 символ пароля
 #chunk += b'\x01'  # 5 символ пароля
 #chunk += b'\x01'  # 6 символ пароля
-print ('chunk:', chunk)
+#print ('chunk:', chunk)
 # There are commands for get different data:
 # \x2f - serial number
 # \x21 - self time
