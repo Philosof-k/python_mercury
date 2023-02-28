@@ -36,7 +36,7 @@ chunk = struct.pack('>L', int(sn))
 print ('chunk:', chunk)
 chunk += b'\x2f'
 print ('chunk:', chunk)
-chunk += crc16(chunk)
+chunk = crc16(chunk)
 print ('chunk:', chunk)
 
 # Отправим данные на счетчик и получим информацию с него
