@@ -2,7 +2,7 @@ import serial
 import struct
 import time
 
-sn = 50
+sn = 1
 
 def crc16(data):
     crc = 0xFFFF 
@@ -28,7 +28,7 @@ def crc16(data):
 ser = serial.serial_for_url("socket://172.30.100.115:4001")
 print ('Connected:', ser.isOpen())
 
-chunk = struct.pack('B', sn)
+chunk = struct.pack('L>', int(sn))
 #chunk = b'\x01'  # код запроса
 #chunk += b'\x01'  # код уровня доступа
 #chunk += b'\x2F'  # 1 символ пароля
@@ -37,7 +37,7 @@ chunk = struct.pack('B', sn)
 #chunk += b'\x01'  # 4 символ пароля
 #chunk += b'\x01'  # 5 символ пароля
 #chunk += b'\x01'  # 6 символ пароля
-print ('chunk:', bytes(chunk))
+print ('chunk:', chunk)
 # There are commands for get different data:
 # \x2f - serial number
 # \x21 - self time
