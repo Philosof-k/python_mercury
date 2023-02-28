@@ -28,7 +28,7 @@ def crc16(data):
 ser = serial.serial_for_url("socket://172.30.100.115:4001")
 print ('Connected:', ser.isOpen())
 
-chunk = struct.pack('>L', int(sn))
+chunk = struct.pack('B', int(sn))
 print ('chunk:', chunk)
 # There are commands for get different data:
 # \x2f - serial number
