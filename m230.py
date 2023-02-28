@@ -9,6 +9,8 @@ sn = 50
 ser = serial.serial_for_url("socket://172.30.100.115:4001")
 print ('Connected:', ser.isOpen())
 
+print (crc16("321234453432"))
+
 # \x2f - Команда для получения серийного номера
 chunk = struct.pack('>L', int(sn))
 chunk += b'\x2f'
