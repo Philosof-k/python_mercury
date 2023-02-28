@@ -34,7 +34,7 @@ print ('Connected:', ser.isOpen())
 # \x2f - Команда для получения серийного номера
 chunk = struct.pack('>L', int(sn))
 chunk += b'\x2f'
-chunk = crc16(chunk)
+chunk += crc16(chunk)
 
 print ('chunk:', chunk)
 
