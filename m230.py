@@ -2,7 +2,7 @@ import serial
 import struct
 import time
 
-sn = 50
+sn = 26222790
 
 def crc16(data):
     crc = 0xFFFF 
