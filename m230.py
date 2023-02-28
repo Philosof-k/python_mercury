@@ -33,10 +33,10 @@ chunk = b'\x01'  # код запроса
 chunk += b'\x01'  # код уровня доступа
 chunk += b'\x01'  # 1 символ пароля
 chunk += b'\x01'  # 2 символ пароля
-chunk += b'\x01'  # 3 символ пароля
-chunk += b'\x01'  # 4 символ пароля
-chunk += b'\x01'  # 5 символ пароля
-chunk += b'\x01'  # 6 символ пароля
+#chunk += b'\x01'  # 3 символ пароля
+#chunk += b'\x01'  # 4 символ пароля
+#chunk += b'\x01'  # 5 символ пароля
+#chunk += b'\x01'  # 6 символ пароля
 print ('chunk:', chunk)
 # There are commands for get different data:
 # \x2f - serial number
@@ -44,7 +44,8 @@ print ('chunk:', chunk)
 # \x63 - get U,I,P
 # \x27 - expended electricity distributed according to tariffs
 # More information you can get there: http://www.incotexcom.ru/doc/M20x.rev2015.02.15.pdf
-chunk += b'\x27'
+#chunk += b'\x27'
+chunk += b'\x27'  # 3 символ пароля
 print ('chunk:', chunk)
 chunk = crc16(chunk)
 print ('chunk:', chunk)
