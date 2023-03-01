@@ -37,7 +37,7 @@ chunk = struct.pack('B', int(sn))
 #chunk += b'\x01'  # 4 символ пароля
 #chunk += b'\x01'  # 5 символ пароля
 #chunk += b'\x01'  # 6 символ пароля
-print ('chunk:', chunk)
+#print ('chunk:', chunk)
 # There are commands for get different data:
 # \x2f - serial number
 # \x21 - self time
@@ -46,13 +46,13 @@ print ('chunk:', chunk)
 # More information you can get there: http://www.incotexcom.ru/doc/M20x.rev2015.02.15.pdf
 #chunk += b'\x27'
 chunk += b'\x27'  # 3 символ пароля
-print ('chunk:', chunk)
+#print ('chunk:', chunk)
 chunk = crc16(chunk)
 print ('chunk:', chunk)
 
 # Send data
-ser.write(chunk)
-time.sleep(1)
+#ser.write(chunk)
+time.sleep(100/1000)
 out = ser.read_all()
 ser.close()
 
