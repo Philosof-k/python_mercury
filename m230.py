@@ -51,7 +51,7 @@ chunk = crc16(chunk)
 print ('chunk:', chunk)
 
 # Send data
-#ser.write(chunk)
+ser.write(chunk)
 time.sleep(100/1000)
 out = ser.read_all()
 ser.close()
